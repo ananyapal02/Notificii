@@ -7,12 +7,15 @@ def work():
                      title = "Knock Knock! It's Study Time!",
                      msg = "Studyyyyy!!!",
                      duration="long",
-                     icon=r"")
+                     icon=r"E:/0.0. Visual Studio Code/AnanyaPal_Python/PROJECTS/MINI- PROJECTS/Notificii/Brain bulb.png")
 
     toast.add_actions(label="Click Me!", launch="https://youtube.com/playlist?list=PLxCzCOWd7aiEed7SKZBnC6ypFDWYLRvB2")
     toast.show()
 
-schedule.every(5).seconds.until(15).seconds.do(work)
+    return schedule.CancelJob
+
+#schedule.every(5).to(15).seconds.do(work)
+schedule.every().day.at('00:43').do(work)
 
 while 1:
     schedule.run_pending()
