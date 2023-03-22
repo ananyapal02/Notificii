@@ -12,11 +12,12 @@ def work():
     toast.add_actions(label="Click Me!", launch="https://youtube.com/playlist?list=PLxCzCOWd7aiEed7SKZBnC6ypFDWYLRvB2")
     toast.show()
 
-schedule.every(5).seconds.do(work)
+schedule.every(5).seconds.until(15).seconds.do(work)
 
 while 1:
     schedule.run_pending()
-    time.sleep(5)
+    time.sleep(1)
+
 
 
 '''
