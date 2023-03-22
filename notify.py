@@ -3,7 +3,7 @@ from winotify import Notification, audio
 
 def work():
     #print("Ananya Pal")
-    toast = Notification(app_id="NeuralNine Script",
+    toast = Notification(app_id="Notificii",
                      title = "Knock Knock! It's Study Time!",
                      msg = "Studyyyyy!!!",
                      duration="long",
