@@ -1,54 +1,46 @@
 import schedule, time
 from winotify import Notification, audio
-
-import multiprocessing
-from playsound import playsound
 import winsound
+import pyttsx3
+engine = pyttsx3.init()
 
 def wakeup():
-    #print("Ananya Pal")
     toast = Notification(app_id="Notificii",
-                     title = "Wake Up!!",
-                     msg = "Good Morning!",
-                     duration="long",
-                     icon=r"E:/0.0. Visual Studio Code/AnanyaPal_Python/PROJECTS/MINI- PROJECTS/Notificii/GM.jpg")
+                        title = "Wake Up!!",
+                        msg = "Good Morning!",
+                        duration="long",
+                        icon=r"E:/0.0. Visual Studio Code/AnanyaPal_Python/PROJECTS/MINI- PROJECTS/Notificii/GM.jpg")
     
-    #winsound.PlaySound("E:/0.0. Visual Studio Code/AnanyaPal_Python/PROJECTS/MINI- PROJECTS/Notificii/GM.wav",winsound.SND_ASYNC)
-    #winsound.PlaySound(None,0)
-    #playsound('E:/0.0. Visual Studio Code/AnanyaPal_Python/PROJECTS/MINI- PROJECTS/Notificii/GM.mp3')
-    toast.set_audio(audio.LoopingAlarm, loop=False)
-    '''
-    duration = 1000  # milliseconds
-    freq = 440  # Hz
-    winsound.Beep(freq, duration)
-    '''
-
-    #toast.add_actions(label="Stop Alarm!", launch=None)
-    #toast.add_actions(audio="E:/0.0. Visual Studio Code/AnanyaPal_Python/PROJECTS/MINI- PROJECTS/Notificii/GM.mp3")
+    winsound.PlaySound("E:/0.0. Visual Studio Code/AnanyaPal_Python/PROJECTS/MINI- PROJECTS/Notificii/GM.wav",winsound.SND_ASYNC)
+            
     toast.show()
     return schedule.CancelJob
 
-schedule.every().day.at('01:43').do(wakeup)
+schedule.every().day.at('5:30').do(wakeup)
 
 def work():
-    #print("Ananya Pal")
     toast = Notification(app_id="Notificii",
-                     title = "Knock Knock! It's Study Time!",
-                     msg = "Studyyyyy!!!",
-                     duration="long",
-                     icon=r"E:/0.0. Visual Studio Code/AnanyaPal_Python/PROJECTS/MINI- PROJECTS/Notificii/Brain bulb.png")
+                        title = "Knock Knock! It's Study Time!",
+                        msg = "Studyyyyy!!!",
+                        duration="long",
+                        icon=r"E:/0.0. Visual Studio Code/AnanyaPal_Python/PROJECTS/MINI- PROJECTS/Notificii/Brain bulb.png")
 
+    engine.say("Knock Knock! It's Study Time!")
+    engine.runAndWait()
+
+    toast.set_audio(audio.LoopingCall, loop=False)
+    
     toast.add_actions(label="Click Me!", launch="https://youtube.com/playlist?list=PLxCzCOWd7aiEed7SKZBnC6ypFDWYLRvB2")
     toast.show()
 
     return schedule.CancelJob
 
 #schedule.every(5).to(15).seconds.do(work)
-schedule.every().day.at('01:44').do(work)
+schedule.every().day.at('12:27').do(work)
 
 while 1:
-    #schedule.run_pending()
-    schedule.run_all(delay_seconds=10)
+    schedule.run_pending()
+    #schedule.run_all(delay_seconds=10)
     time.sleep(1)
 
 
