@@ -16,7 +16,27 @@ def wakeup():
     toast.show()
     return schedule.CancelJob
 
-schedule.every().day.at('5:30').do(wakeup)
+schedule.every().day.at('13:25').do(wakeup)
+
+
+def exercise():
+    toast = Notification(app_id="Notificii",
+                        title = "Action Time!!Go and Exercise!!",
+                        msg = "Go and Exercise!!!",
+                        duration="long",
+                        icon=r"E:/0.0. Visual Studio Code/AnanyaPal_Python/PROJECTS/MINI- PROJECTS/Notificii/Brain bulb.png")
+    
+    #engine.say("Go and Exercise!!!")
+    #engine.runAndWait()
+    winsound.PlaySound("E:/0.0. Visual Studio Code/AnanyaPal_Python/PROJECTS/MINI- PROJECTS/Notificii/Action.wav",winsound.SND_ASYNC)  
+    
+    #toast.add_actions(label="Click Me!", launch="https://youtube.com/playlist?list=PLxCzCOWd7aiEed7SKZBnC6ypFDWYLRvB2")
+    #toast.show()
+
+    return schedule.CancelJob
+
+schedule.every().day.at('13:25').do(exercise)
+
 
 def work():
     toast = Notification(app_id="Notificii",
@@ -35,12 +55,12 @@ def work():
 
     return schedule.CancelJob
 
-#schedule.every(5).to(15).seconds.do(work)
-schedule.every().day.at('12:27').do(work)
+schedule.every().day.at('13:26').do(work)
+
 
 while 1:
-    schedule.run_pending()
-    #schedule.run_all(delay_seconds=10)
+    #schedule.run_pending()
+    schedule.run_all(delay_seconds=10)
     time.sleep(1)
 
 
